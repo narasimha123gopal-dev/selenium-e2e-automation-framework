@@ -1,0 +1,24 @@
+name: Selenium CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: temurin
+        java-version: 11
+
+    - name: Compile
+      run: javac -cp "lib/*" src/tests/LoginTest.java
+
+    - name: Run Test
+      run: java -cp ".;lib/*;src" tests.LoginTest
