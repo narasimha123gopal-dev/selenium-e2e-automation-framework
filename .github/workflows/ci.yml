@@ -6,19 +6,16 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Setup Java
-      uses: actions/setup-java@v4
-      with:
-        distribution: temurin
-        java-version: 11
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
 
-    - name: Compile
-      run: javac -cp "lib/*" src/tests/LoginTest.java
-
-    - name: Run Test
-      run: java -cp ".;lib/*;src" tests.LoginTest
+      - name: Run Tests
+        run: mvn clean test

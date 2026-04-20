@@ -7,23 +7,23 @@ public class InventoryPage {
 
     WebDriver driver;
 
-    By productTitle = By.className("inventory_item_name");
-    By addToCart = By.id("add-to-cart-sauce-labs-backpack");
-    By cartIcon = By.className("shopping_cart_link");
-
     public InventoryPage(WebDriver driver) {
         this.driver = driver;
     }
 
+    By firstProduct = By.className("inventory_item_name");
+    By addToCart = By.xpath("(//button[text()='Add to cart'])[1]");
+    By cartIcon = By.className("shopping_cart_link");
+
     public String getProductTitle() {
-        return driver.findElement(productTitle).getText();
+        return driver.findElement(firstProduct).getText();
     }
 
     public void addProductToCart() {
         driver.findElement(addToCart).click();
     }
 
-    public void goToCart() {
+    public void openCart() {
         driver.findElement(cartIcon).click();
     }
 }

@@ -7,18 +7,23 @@ public class CartPage {
 
     WebDriver driver;
 
-    By checkoutBtn = By.id("checkout");
-    By removeBtn = By.id("remove-sauce-labs-backpack");
-
     public CartPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void removeProduct() {
-        driver.findElement(removeBtn).click();
+    By cartItem = By.className("inventory_item_name");
+    By checkoutBtn = By.id("checkout");
+    By removeBtn = By.xpath("//button[text()='Remove']");
+
+    public String getCartItem() {
+        return driver.findElement(cartItem).getText();
     }
 
-    public void checkout() {
+    public void clickCheckout() {
         driver.findElement(checkoutBtn).click();
+    }
+
+    public void removeItem() {
+        driver.findElement(removeBtn).click();
     }
 }

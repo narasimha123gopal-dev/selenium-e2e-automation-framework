@@ -1,0 +1,19 @@
+# Maven
+target/
+
+# Build
+bin/
+*.class
+
+# TestNG
+test-output/
+
+# Logs
+*.log
+
+# IDE
+.project
+.classpath
+.settings/
+.idea/
+.vscode/

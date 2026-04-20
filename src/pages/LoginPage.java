@@ -7,14 +7,13 @@ public class LoginPage {
 
     WebDriver driver;
 
-    By username = By.id("user-name");
-    By password = By.id("password");
-    By loginBtn = By.id("login-button");
-    By errorMsg = By.cssSelector("h3[data-test='error']");
-
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
+
+    By username = By.id("user-name");
+    By password = By.id("password");
+    By loginBtn = By.id("login-button");
 
     public void openSite() {
         driver.get("https://www.saucedemo.com/");
@@ -24,9 +23,5 @@ public class LoginPage {
         driver.findElement(username).sendKeys(user);
         driver.findElement(password).sendKeys(pass);
         driver.findElement(loginBtn).click();
-    }
-
-    public String getError() {
-        return driver.findElement(errorMsg).getText();
     }
 }

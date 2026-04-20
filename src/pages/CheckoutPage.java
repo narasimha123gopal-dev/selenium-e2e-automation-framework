@@ -7,24 +7,29 @@ public class CheckoutPage {
 
     WebDriver driver;
 
+    public CheckoutPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
     By firstName = By.id("first-name");
     By lastName = By.id("last-name");
     By zip = By.id("postal-code");
     By continueBtn = By.id("continue");
     By finishBtn = By.id("finish");
-
-    public CheckoutPage(WebDriver driver) {
-        this.driver = driver;
-    }
+    By successMsg = By.className("complete-header");
 
     public void enterDetails() {
-        driver.findElement(firstName).sendKeys("Test");
-        driver.findElement(lastName).sendKeys("User");
-        driver.findElement(zip).sendKeys("12345");
+        driver.findElement(firstName).sendKeys("John");
+        driver.findElement(lastName).sendKeys("Doe");
+        driver.findElement(zip).sendKeys("500001");
+        driver.findElement(continueBtn).click();
     }
 
-    public void completeOrder() {
-        driver.findElement(continueBtn).click();
+    public void finishOrder() {
         driver.findElement(finishBtn).click();
+    }
+
+    public String getSuccessMessage() {
+        return driver.findElement(successMsg).getText();
     }
 }
